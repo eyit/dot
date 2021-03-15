@@ -1,0 +1,142 @@
+
+
+    # global(s)
+    set $mod Mod4
+    font pango:FiraCodeRetina 11
+    floating_modifier $mod
+
+    # bar
+    bar {
+        i3bar_command  i3bar --bar_id bar-0
+        status_command i3blocks -c ~/.config/i3/i3blocks.conf
+        position top
+        font pango:FontAwesome 8,FiraCodeRetina 11
+        separator_symbol "::"
+        colors {
+            background #1b1d1f
+            statusline #ffffff
+            separator  #a1a1a1 # border backgr. text
+            focused_workspace  $color1 $color2 #ffffff
+            inactive_workspace #1b1d1f #1b1d1f #a1a1a1
+            urgent_workspace   #1b1d1f #aaaaaa #000000
+
+        }
+    }
+
+    # color - class     border      bckgrnd     text
+    client.focused      $color1     $color2     #000000
+
+    # exec(s)
+    exec --no-startup-id /usr/bin/gnome-settings-daemon
+    exec --no-startup-id /usr/bin/blueman-applet
+    exec --no-startup-id /usr/bin/nm-applet
+    exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
+
+    # hotkey(s)
+    bindsym $mod+Return exec gnome-terminal
+    bindsym $mod+b exec google-chrome
+    bindsym $mod+Shift+b exec google-chrome --incognito
+    bindsym $mod+q kill
+    bindsym $mod+x kill
+    bindsym $mod+d exec --no-startup-id dmenu_run -b -fn 'FiraCodeRetina-11'
+    bindsym $mod+l exec i3lock
+    bindsym $mod+Shift+v exec nordvpn-toggle
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
+    bindsym $mod+Shift+j move left
+    bindsym $mod+Shift+k move down
+    bindsym $mod+Shift+l move up
+    bindsym $mod+Shift+semicolon move right
+    bindsym $mod+Shift+Left move left
+    bindsym $mod+Shift+Down move down
+    bindsym $mod+Shift+Up move up
+    bindsym $mod+Shift+Right move right
+    bindsym $mod+h split h
+    bindsym $mod+v split v
+    bindsym $mod+f fullscreen toggle
+    bindsym $mod+s layout stacking
+    bindsym $mod+w layout tabbed
+    bindsym $mod+e layout toggle split
+    bindsym $mod+Shift+space floating toggle
+    bindsym $mod+space focus mode_toggle
+    bindsym $mod+a focus parent
+    bindsym $mod+1 workspace 1
+    bindsym $mod+2 workspace 2
+    bindsym $mod+3 workspace 3
+    bindsym $mod+4 workspace 4
+    bindsym $mod+5 workspace 5
+    bindsym $mod+6 workspace 6
+    bindsym $mod+7 workspace 7
+    bindsym $mod+8 workspace 8
+    bindsym $mod+9 workspace 9
+    bindsym $mod+0 workspace 10
+    bindsym $mod+Shift+1 move container to workspace 1
+    bindsym $mod+Shift+2 move container to workspace 2
+    bindsym $mod+Shift+3 move container to workspace 3
+    bindsym $mod+Shift+4 move container to workspace 4
+    bindsym $mod+Shift+5 move container to workspace 5
+    bindsym $mod+Shift+6 move container to workspace 6
+    bindsym $mod+Shift+7 move container to workspace 7
+    bindsym $mod+Shift+8 move container to workspace 8
+    bindsym $mod+Shift+9 move container to workspace 9
+    bindsym $mod+Shift+0 move container to workspace 10
+    bindsym $mod+Shift+c reload
+    bindsym $mod+Shift+r restart
+    bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+    # hotkeys - alsamixer
+    bindsym XF86AudioRaiseVolume    exec amixer set Master 5%+
+    bindsym XF86AudioLowerVolume    exec amixer set Master 5%-
+    bindsym XF86AudioMute           exec amixer set Master toggle && amixer set Speaker toggle
+
+    # hotkeys - screenshot - scrot
+    bindsym --release Print            exec "xfce4-screenshooter -r"
+    bindsym --release Shift+Print      exec "xfce4-screenshooter -f"
+
+    # i3gaps - gaps
+    new_window pixel    1
+    gaps inner          128
+    gaps outer          0
+    bindsym $mod+g mode "gaps"
+    mode "gaps" {
+
+        bindsym minus       gaps inner current  minus  10
+        bindsym plus        gaps inner current  plus   10
+        bindsym 0           gaps inner current  set    100
+
+        bindsym Shift+minus gaps inner all      minus  10
+        bindsym Shift+plus  gaps inner all      plus   10
+        bindsym Shift+0     gaps inner all      set    100
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+
+    }
+
+    # i3 - resize
+    mode "resize" {
+
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+
+    }
+    bindsym $mod+r mode "resize"
+
+    # xbacklight -- screen brightness
+    bindsym XF86MonBrightnessUp     exec xbacklight -inc 5
+    bindsym XF86MonBrightnessDown   exec xbacklight -dec 5
+
+
