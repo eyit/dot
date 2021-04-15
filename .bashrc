@@ -59,8 +59,11 @@
     done
     [ -e "$HOME/.bin" ] && export PATH="$PATH:$HOME/.bin"
 
-    # paths - mark.
-    if hash mark 2>/dev/null; then cd "$( mark --latest )"; fi
+    # paths mark.
+    if command -v mark &> /dev/null; then
+        marked="$( mark -- )"
+        [ -d "$marked" ] && cd "$marked"
+    fi
 
     # ps1.
     PS1b='\[\e[1;97m\]'
