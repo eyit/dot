@@ -2,7 +2,7 @@
 
     # global(s)
     set $mod Mod4
-    font pango:FiraCodeRetina 11
+    font pango:FiraCode 11
     floating_modifier $mod
 
     # bar
@@ -10,7 +10,7 @@
         i3bar_command  i3bar --bar_id bar-0
         status_command i3blocks -c ~/.config/i3/i3blocks.conf
         position top
-        font pango:FontAwesome 8,FiraCodeRetina 11
+        font pango:FontAwesome 8,FiraCode 11
         separator_symbol "::"
         colors {
             background #1b1d1f
@@ -27,15 +27,12 @@
     client.focused      $color1     $color2     #000000
 
     # exec(s)
-    exec --no-startup-id /usr/bin/gnome-settings-daemon
-    exec --no-startup-id /usr/bin/blueman-applet
-    exec --no-startup-id /usr/bin/nm-applet
-    exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
+    exec --no-startup-id bash "$HOME/.bg"
 
     # hotkey(s)
-    bindsym $mod+Return exec gnome-terminal
-    bindsym $mod+b exec google-chrome
-    bindsym $mod+Shift+b exec google-chrome --incognito
+    bindsym $mod+Return exec terminator
+    bindsym $mod+b exec firefox
+    bindsym $mod+Shift+b exec firefox --private-window
     bindsym $mod+q kill
     bindsym $mod+x kill
     bindsym $mod+d exec --no-startup-id dmenu_run -b -fn 'FiraCodeRetina-11'
