@@ -29,9 +29,12 @@
     export LESS_TERMCAP_us=$'\E[01;32m'
 
     # bash completition.
-    [ -r /etc/bash_completion.d/pass.bash-completion    ] && . /etc/bash_completion.d/pass.bash-completion
-    [ -r /etc/docker.autocomplete                       ] && . /etc/docker.autocomplete
-    [ -r /usr/share/bash-completion/bash_completion     ] && . /usr/share/bash-completion/bash_completion
+    [ -r /etc/bash_completion.d/pass.bash-completion ] && . /etc/bash_completion.d/pass.bash-completion
+    [ -r /etc/docker.autocomplete                    ] && . /etc/docker.autocomplete
+    [ -r /usr/share/bash-completion/bash_completion  ] && . /usr/share/bash-completion/bash_completion
+
+    # dbus.
+    command -v dbus-launch &> /dev/null && export $(dbus-launch)
 
     # enviromentals.
     export EDITOR=vim
