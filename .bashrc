@@ -10,6 +10,7 @@
     # alias.
     alias clipboard="xclip -i -selection clipboard"
     alias cp='cp -v'
+    alias g='gst'
     alias ll='ls -vlhF --color'
     alias ls='ls -vF --color'
     alias less='less -R'
