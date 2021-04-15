@@ -15,6 +15,7 @@
     alias less='less -R'
     alias mkdir='mkdir -p'
     alias mv='mv -iv'
+    alias u='uxhs'
 
     # base16 color.
     [ -e "$HOME/.color" ] && bash "$HOME/.color"
